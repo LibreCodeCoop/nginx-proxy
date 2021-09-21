@@ -23,6 +23,8 @@ services:
       - ./volumes/html:/usr/share/nginx/html
     networks:
       - reverse-proxy
+    environment:
+      - TZ
 
   nginx-letsencrypt:
     container_name: nginx-letsencrypt
@@ -37,3 +39,4 @@ services:
       - ./volumes/html:/usr/share/nginx/html
     environment:
       - NGINX_PROXY_CONTAINER=nginx-proxy
+      - TZ
