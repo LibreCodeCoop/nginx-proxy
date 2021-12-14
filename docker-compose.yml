@@ -26,9 +26,9 @@ services:
     environment:
       - TZ
 
-  nginx-letsencrypt:
-    container_name: nginx-letsencrypt
-    image: jrcs/letsencrypt-nginx-proxy-companion
+  nginx-proxy-acme:
+    container_name: nginx-proxy-acme
+    image: nginxproxy/acme-companion
     restart: unless-stopped
     networks:
       - reverse-proxy
@@ -37,6 +37,7 @@ services:
       - ./volumes/vhost.d/:/etc/nginx/vhost.d
       - ./volumes/certs:/etc/nginx/certs:rw
       - ./volumes/html:/usr/share/nginx/html
+      - ./volumes/acme/:/etc/acme.sh
     environment:
       - NGINX_PROXY_CONTAINER=nginx-proxy
       - TZ
