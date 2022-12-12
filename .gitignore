@@ -1,2 +1,3 @@
 /volumes/conf.d/default.conf
 /volumes/certs/
+/volumes/acme/
