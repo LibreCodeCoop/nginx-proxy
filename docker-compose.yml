@@ -27,8 +27,8 @@ services:
       - TZ
 
   nginx-proxy-acme:
-    container_name: nginx-proxy-acme:latest
-    image: nginxproxy/acme-companion
+    container_name: nginx-proxy-acme
+    image: nginxproxy/acme-companion:latest
     restart: unless-stopped
     networks:
       - reverse-proxy
