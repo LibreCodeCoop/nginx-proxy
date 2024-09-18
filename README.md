@@ -12,6 +12,11 @@ Docker environments where all services are on a single host machine. Managed bas
 ```bash
 git clone https://github.com/LibreCodeCoop/nginx-proxy ~/projects/nginx-proxy
 ```
+* Create an external network, which will receive traffic on ports 80 and 443
+```
+docker network create reverse-proxy
+```
+
 * Launch the application
 ```bash
 cd ~/projects/nginx-proxy
