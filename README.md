@@ -50,14 +50,17 @@ A service setup may require specific configurations, for example if the service 
 ### In subdomains
 * You will need to add at least these environments to the server:
 ```bash
-# Use as above if www should be preserved. Note that it will create more entries in nginx.
-# Also add to LETSENCRYPT_HOST create a DNS record type CNAME or A for the domain.
-#VIRTUAL_HOST=domain1.coop,www.domain1.coop
-
 VIRTUAL_HOST=
 LETSENCRYPT_HOST=
 LETSENCRYPT_EMAIL=
 ```
+* If redirect www to non-www is needed, do the following (replace domainname.com according to your needs):
+* Create file ./volumes/vhost.d/domainname.com
+  with the following content:
+  
+  `return 301 https://www.domainname.com$request_uri;`
+
+
 ### In subdomains and paths
 * https://github.com/nginx-proxy/nginx-proxy/tree/main/docs#path-based-routing
 * You will almost certainly need this:
