@@ -50,6 +50,10 @@ A service setup may require specific configurations, for example if the service 
 ### In subdomains
 * You will need to add at least these environments to the server:
 ```bash
+# Use as above if www should be preserved. Note that it will create more entries in nginx.
+# Also add to LETSENCRYPT_HOST create a DNS record type CNAME or A for the domain.
+#VIRTUAL_HOST=domain1.coop,www.domain1.coop
+
 VIRTUAL_HOST=
 LETSENCRYPT_HOST=
 LETSENCRYPT_EMAIL=
