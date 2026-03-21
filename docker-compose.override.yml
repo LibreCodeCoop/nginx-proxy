@@ -1,8 +1,0 @@
-services:
-  nginx-proxy:
-    labels:
-      - com.centurylinklabs.watchtower.enable=true
-
-  nginx-proxy-acme:
-    labels:
-      - com.centurylinklabs.watchtower.enable=true
