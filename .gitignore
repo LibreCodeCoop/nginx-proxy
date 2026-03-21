@@ -2,3 +2,4 @@
 /volumes/certs/
 /volumes/acme/
 /volumes/vhost.d/
+/docker-compose.override.yml
