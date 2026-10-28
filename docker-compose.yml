@@ -10,9 +10,6 @@ services:
     container_name: nginx-proxy
     image: nginxproxy/nginx-proxy:alpine
     restart: unless-stopped
-    # Defaults keep 80/443 bound directly to the HTTP listeners.
-    # For TLS SNI multiplexing, the host still exposes 80/443 but these
-    # container ports become dedicated stream listeners.
     ports:
       - "80:${NGINX_PROXY_HTTP_CONTAINER_PORT:-80}"
       - "443:${NGINX_PROXY_HTTPS_CONTAINER_PORT:-443}"
