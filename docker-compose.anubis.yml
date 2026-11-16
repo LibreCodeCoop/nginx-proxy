@@ -1,0 +1,24 @@
+services:
+  anubis:
+    container_name: anubis
+    image: ghcr.io/techarohq/anubis:latest
+    restart: unless-stopped
+    expose:
+      - "8923"
+    networks:
+      - reverse-proxy
+    environment:
+      BIND: ":8923"
+      TARGET: "${ANUBIS_TARGET:?Set ANUBIS_TARGET to the backend URL}"
+      VIRTUAL_HOST: "${ANUBIS_VIRTUAL_HOST:?Set ANUBIS_VIRTUAL_HOST to the protected hostname}"
+      VIRTUAL_PORT: "8923"
+      LETSENCRYPT_HOST: "${ANUBIS_VIRTUAL_HOST:?Set ANUBIS_VIRTUAL_HOST to the protected hostname}"
+      LETSENCRYPT_EMAIL: "${ANUBIS_LETSENCRYPT_EMAIL:?Set ANUBIS_LETSENCRYPT_EMAIL}"
+      SERVE_ROBOTS_TXT: "${ANUBIS_SERVE_ROBOTS_TXT:-true}"
+      TZ: "${TZ:-America/Sao_Paulo}"
+    healthcheck:
+      test: ["CMD", "anubis", "--healthcheck"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
